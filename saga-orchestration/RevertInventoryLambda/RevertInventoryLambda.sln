@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RevertInventoryLambda.Tests", "test\RevertInventoryLambda.Tests\RevertInventoryLambda.Tests.csproj", "{D90C7B17-FAE9-44AA-BF20-BF9C5870E450}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RevertInventoryLambda", "src\RevertInventoryLambda\RevertInventoryLambda.csproj", "{A104ADFB-BEEE-43C1-A230-BE150AFA2085}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D90C7B17-FAE9-44AA-BF20-BF9C5870E450}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D90C7B17-FAE9-44AA-BF20-BF9C5870E450}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D90C7B17-FAE9-44AA-BF20-BF9C5870E450}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D90C7B17-FAE9-44AA-BF20-BF9C5870E450}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A104ADFB-BEEE-43C1-A230-BE150AFA2085}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A104ADFB-BEEE-43C1-A230-BE150AFA2085}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A104ADFB-BEEE-43C1-A230-BE150AFA2085}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A104ADFB-BEEE-43C1-A230-BE150AFA2085}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

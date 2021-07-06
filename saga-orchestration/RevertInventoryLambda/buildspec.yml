@@ -1,0 +1,35 @@
+version: 0.2
+env:
+  variables:
+    DOTNET_ROOT: /root/.dotnet
+  secrets-manager:
+    AWS_ACCESS_KEY_ID_PARAM: CodeBuild:AWS_ACCESS_KEY_ID
+    AWS_SECRET_ACCESS_KEY_PARAM: CodeBuild:AWS_SECRET_ACCESS_KEY
+phases:
+  install:
+    runtime-versions:
+      dotnet: 3.1
+  pre_build:
+    commands:
+      - echo Restore started on `date`
+      - export PATH="$PATH:/root/.dotnet/tools"
+      - pip install --upgrade pip
+      - pip install --upgrade awscli
+      - aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID_PARAM
+      - aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY_PARAM
+
+  build:
+    commands:
+      - DB_IMG_PATH=$PWD
+      - cd Lambdas/RevertInventoryLambda/src/RevertInventoryLambda
+      - dotnet clean
+      - dotnet restore
+      - echo Build started on `date`
+      - dotnet new -i Amazon.Lambda.Templates::*
+      - dotnet tool install -g Amazon.Lambda.Tools
+      - dotnet tool update -g Amazon.Lambda.Tools
+      - dotnet build -c Release RevertInventoryLambda.csproj
+      - dotnet test -c Release ../../test/RevertInventoryLambda.Tests/RevertInventoryLambda.Tests.csproj
+      - dotnet lambda deploy-function "RevertInventoryLambda" --function-role "arn:aws:iam::119176563765:role/AwsomeLambdaExecutionRole" --region "ap-southeast-2"
+      - cd "$DB_IMG_PATH"
+      - pwd

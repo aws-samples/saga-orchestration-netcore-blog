@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+        <AWSProjectType>Lambda</AWSProjectType>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Amazon.Lambda.Core" Version="1.1.0" />
+        <PackageReference Include="Amazon.Lambda.Serialization.SystemTextJson" Version="2.0.1" />
+        <PackageReference Include="AWSSDK.DynamoDBv2" Version="3.7.0.36" />
+        <PackageReference Include="MySql.Data" Version="8.0.25" />
+    </ItemGroup>
+</Project>

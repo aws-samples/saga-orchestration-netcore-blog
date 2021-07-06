@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvokeOrchestratorLambda.Tests", "test\InvokeOrchestratorLambda.Tests\InvokeOrchestratorLambda.Tests.csproj", "{95E8D143-7CAC-4301-91F2-28D8B74F1DD3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvokeOrchestratorLambda", "src\InvokeOrchestratorLambda\InvokeOrchestratorLambda.csproj", "{2672A028-85E6-46E1-BA22-37CE17B918D5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{95E8D143-7CAC-4301-91F2-28D8B74F1DD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95E8D143-7CAC-4301-91F2-28D8B74F1DD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95E8D143-7CAC-4301-91F2-28D8B74F1DD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95E8D143-7CAC-4301-91F2-28D8B74F1DD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2672A028-85E6-46E1-BA22-37CE17B918D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2672A028-85E6-46E1-BA22-37CE17B918D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2672A028-85E6-46E1-BA22-37CE17B918D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2672A028-85E6-46E1-BA22-37CE17B918D5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

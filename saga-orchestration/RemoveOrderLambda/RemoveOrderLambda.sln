@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RemoveOrderLambda.Tests", "test\RemoveOrderLambda.Tests\RemoveOrderLambda.Tests.csproj", "{3DB520F8-D41E-4A59-94D3-7C719E133A71}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RemoveOrderLambda", "src\RemoveOrderLambda\RemoveOrderLambda.csproj", "{02B1C84D-F23F-4617-B4A0-1C13DC549B8F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3DB520F8-D41E-4A59-94D3-7C719E133A71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DB520F8-D41E-4A59-94D3-7C719E133A71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DB520F8-D41E-4A59-94D3-7C719E133A71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DB520F8-D41E-4A59-94D3-7C719E133A71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02B1C84D-F23F-4617-B4A0-1C13DC549B8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02B1C84D-F23F-4617-B4A0-1C13DC549B8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02B1C84D-F23F-4617-B4A0-1C13DC549B8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02B1C84D-F23F-4617-B4A0-1C13DC549B8F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UpdateInventoryLambda.Tests", "test\UpdateInventoryLambda.Tests\UpdateInventoryLambda.Tests.csproj", "{61B30707-83DD-4E4C-A06B-A330282B3510}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UpdateInventoryLambda", "src\UpdateInventoryLambda\UpdateInventoryLambda.csproj", "{198E9E7A-20AE-4DB8-8ABC-06BC21BF7493}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{61B30707-83DD-4E4C-A06B-A330282B3510}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61B30707-83DD-4E4C-A06B-A330282B3510}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61B30707-83DD-4E4C-A06B-A330282B3510}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61B30707-83DD-4E4C-A06B-A330282B3510}.Release|Any CPU.Build.0 = Release|Any CPU
+		{198E9E7A-20AE-4DB8-8ABC-06BC21BF7493}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{198E9E7A-20AE-4DB8-8ABC-06BC21BF7493}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{198E9E7A-20AE-4DB8-8ABC-06BC21BF7493}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{198E9E7A-20AE-4DB8-8ABC-06BC21BF7493}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

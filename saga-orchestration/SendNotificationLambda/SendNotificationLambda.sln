@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SendNotificationLambda.Tests", "test\SendNotificationLambda.Tests\SendNotificationLambda.Tests.csproj", "{11FF7023-904F-4BD3-8264-F6D11C37961C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SendNotificationLambda", "src\SendNotificationLambda\SendNotificationLambda.csproj", "{A904495A-0D01-4984-AFE4-80E8EE8E7F2C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{11FF7023-904F-4BD3-8264-F6D11C37961C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11FF7023-904F-4BD3-8264-F6D11C37961C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11FF7023-904F-4BD3-8264-F6D11C37961C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11FF7023-904F-4BD3-8264-F6D11C37961C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A904495A-0D01-4984-AFE4-80E8EE8E7F2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A904495A-0D01-4984-AFE4-80E8EE8E7F2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A904495A-0D01-4984-AFE4-80E8EE8E7F2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A904495A-0D01-4984-AFE4-80E8EE8E7F2C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

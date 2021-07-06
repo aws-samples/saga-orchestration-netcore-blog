@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MakePaymentLambda.Tests", "test\MakePaymentLambda.Tests\MakePaymentLambda.Tests.csproj", "{35568729-84AB-4D11-998B-AB3BDD2E5B89}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MakePaymentLambda", "src\MakePaymentLambda\MakePaymentLambda.csproj", "{E9004A8C-D024-49EA-833F-A88DA8C9DF44}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{35568729-84AB-4D11-998B-AB3BDD2E5B89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35568729-84AB-4D11-998B-AB3BDD2E5B89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35568729-84AB-4D11-998B-AB3BDD2E5B89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35568729-84AB-4D11-998B-AB3BDD2E5B89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9004A8C-D024-49EA-833F-A88DA8C9DF44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9004A8C-D024-49EA-833F-A88DA8C9DF44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9004A8C-D024-49EA-833F-A88DA8C9DF44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9004A8C-D024-49EA-833F-A88DA8C9DF44}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

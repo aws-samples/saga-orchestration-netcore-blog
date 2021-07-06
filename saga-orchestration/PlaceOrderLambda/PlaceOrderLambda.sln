@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlaceOrderLambda.Tests", "test\PlaceOrderLambda.Tests\PlaceOrderLambda.Tests.csproj", "{570B97B9-D4B3-4C9B-89B2-D223FC2BC92B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlaceOrderLambda", "src\PlaceOrderLambda\PlaceOrderLambda.csproj", "{5FC60B53-D626-44E0-AF61-5E6C716C373F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{570B97B9-D4B3-4C9B-89B2-D223FC2BC92B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{570B97B9-D4B3-4C9B-89B2-D223FC2BC92B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{570B97B9-D4B3-4C9B-89B2-D223FC2BC92B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{570B97B9-D4B3-4C9B-89B2-D223FC2BC92B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FC60B53-D626-44E0-AF61-5E6C716C373F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FC60B53-D626-44E0-AF61-5E6C716C373F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FC60B53-D626-44E0-AF61-5E6C716C373F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FC60B53-D626-44E0-AF61-5E6C716C373F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
