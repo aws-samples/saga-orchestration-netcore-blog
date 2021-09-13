@@ -1,11 +1,6 @@
-## My Project
+## Build a serverless distributed application in .NET using Saga orchestration pattern 
 
-TODO: Fill this README out!
-
-Be sure to:
-
-* Change the title in this README
-* Edit your repository description on GitHub
+Saga design pattern can be used to preserve the data integrity with distributed transactions across microservices. The source code in this repo provids sample code for the implementation of the saga orchestration pattern using .NET core 3.1 on AWS.  
 
 ## Security
 
