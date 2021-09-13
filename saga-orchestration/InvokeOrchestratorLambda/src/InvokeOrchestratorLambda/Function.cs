@@ -22,7 +22,10 @@ namespace InvokeOrchestratorLambda
         public async Task<APIGatewayProxyResponse> FunctionHandler(OrderDetails orderDetails, ILambdaContext context)
         {
             var input = HttpStatusCode.Accepted;
-            var amazonStepFunctionsConfig = new AmazonStepFunctionsConfig {RegionEndpoint = RegionEndpoint.USEast1};
+            var awsRegion = System.Environment.GetEnvironmentVariable("AWS_REGION");
+            var regionEndpoint = RegionEndpoint.GetBySystemName(awsRegion);
+            var amazonStepFunctionsConfig = new AmazonStepFunctionsConfig {RegionEndpoint = regionEndpoint};
+            
             using (var amazonStepFunctionsClient =
                 new AmazonStepFunctionsClient(amazonStepFunctionsConfig))
             {
@@ -34,7 +37,7 @@ namespace InvokeOrchestratorLambda
                 var functionArn = context.InvokedFunctionArn;
                 var splitArn = functionArn.Split(":");
                 var accountId = splitArn[4];
-                var awsRegion = System.Environment.GetEnvironmentVariable("AWS_REGION");
+                
 
                 var startExecutionRequest = new StartExecutionRequest
                 {
