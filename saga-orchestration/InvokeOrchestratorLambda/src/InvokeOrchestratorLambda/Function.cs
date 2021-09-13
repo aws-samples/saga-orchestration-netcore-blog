@@ -30,10 +30,16 @@ namespace InvokeOrchestratorLambda
                 
                 var jsonInput = JsonSerializer.Serialize(orderDetails);
                 context.Logger.Log(jsonInput);
+
+                var functionArn = context.InvokedFunctionArn;
+                var splitArn = functionArn.Split(":");
+                var accountId = splitArn[4];
+                var awsRegion = System.Environment.GetEnvironmentVariable("AWS_REGION");
+
                 var startExecutionRequest = new StartExecutionRequest
                 {
                     Input = jsonInput,
-                    StateMachineArn = "arn:aws:states:us-east-1:508578766011:stateMachine:DistributedTransactionOrchestrator"
+                    StateMachineArn = "arn:aws:states:" + awsRegion + ":" + accountId + ":stateMachine:DistributedTransactionOrchestrator"
                 };
                 context.Logger.Log("before StartExecutionAsync");
                 var taskStartExecutionResponse =
