@@ -2,24 +2,14 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <!-- Roll forward to future major versions of the netcoreapp as needed -->
     <RollForward>Major</RollForward>
+    <LangVersion>default</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- CDK Construct Library dependencies -->
-    <PackageReference Include="Amazon.CDK" Version="1.111.0" />
-    <PackageReference Include="Amazon.CDK.AWS.APIGateway" Version="1.111.0" />
-    <PackageReference Include="Amazon.CDK.AWS.DynamoDB" Version="1.111.0" />
-    <PackageReference Include="Amazon.CDK.AWS.IAM" Version="1.111.0" />
-    <PackageReference Include="Amazon.CDK.AWS.Lambda" Version="1.111.0" />
-    <PackageReference Include="Amazon.CDK.AWS.StepFunctions" Version="1.111.0" />
-    <PackageReference Include="Amazon.CDK.AWS.StepFunctions.Tasks" Version="1.111.0" />
-
-    <!-- jsii Roslyn analyzers (un-comment to obtain compile-time checks for missing required props
-    <PackageReference Include="Amazon.Jsii.Analyzers" Version="*" PrivateAssets="all" />
-    -->
+    <PackageReference Include="Amazon.CDK.Lib" Version="2.69.0" />
   </ItemGroup>
 
 </Project>
