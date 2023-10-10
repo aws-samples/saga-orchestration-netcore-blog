@@ -34,7 +34,7 @@ git clone https://github.com/aws-samples/saga-orchestration-netcore-blog
 ```
 3. After cloning, this is the directory structure:
 
-![directory_structure](images/directory_structure.png.png)
+![directory_structure](images/directory_structure.png)
 
 4. The Lambda functions in the saga-orchestration directory must be packaged and copied to the cdk-saga-orchestration\lambdas directory before deployment. Run these commands to process the PlaceOrderLambda function:
 ```bash
