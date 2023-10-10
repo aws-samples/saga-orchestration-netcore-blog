@@ -7,7 +7,7 @@ Blog reference: [https://aws.amazon.com/blogs/compute/building-a-serverless-dist
 ## Security
 
 See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
-dotnet
+
 ## License
 
 This library is licensed under the MIT-0 License. See the LICENSE file.
