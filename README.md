@@ -4,14 +4,6 @@ Saga design pattern can be used to preserve the data integrity with distributed 
 
 Blog reference: [https://aws.amazon.com/blogs/compute/building-a-serverless-distributed-application-using-a-saga-orchestration-pattern/](https://aws.amazon.com/blogs/compute/building-a-serverless-distributed-application-using-a-saga-orchestration-pattern/)
 
-## Security
-
-See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
-
-## License
-
-This library is licensed under the MIT-0 License. See the LICENSE file.
-
 ## Prerequisites
 
 For this walkthrough, you need:
@@ -201,3 +193,11 @@ To avoid incurring additional charges, clean up all the resources that have been
 ```bash
 cdk destroy
 ```
+
+## Security
+
+See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
+
+## License
+
+This library is licensed under the MIT-0 License. See the LICENSE file.
