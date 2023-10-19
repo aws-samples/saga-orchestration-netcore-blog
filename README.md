@@ -1,16 +1,14 @@
 ## Build a serverless distributed application in .NET using Saga orchestration pattern 
 
-Saga design pattern can be used to preserve the data integrity with distributed transactions across microservices. The source code in this repo provids sample code for the implementation of the saga orchestration pattern using .NET 6.0 on AWS.  
+The saga orchestration pattern helps preserve data integrity in distributed transactions that span multiple services. In a distributed transaction, multiple services can be called before a transaction is completed. When the services store data in different data stores, it can be challenging to maintain data consistency across these data stores. The source code in this repo provids sample code for the implementation of the saga orchestration pattern using .NET 6.0 on AWS.  
 
-Blog reference: [https://aws.amazon.com/blogs/compute/building-a-serverless-distributed-application-using-a-saga-orchestration-pattern/](https://aws.amazon.com/blogs/compute/building-a-serverless-distributed-application-using-a-saga-orchestration-pattern/)
+Use the saga orchestration pattern when:
 
-## Security
+* Your system requires data integrity and consistency in distributed transactions that span multiple data stores.
+* The data store doesn't provide 2PC to provide ACID transactions, and implementing 2PC within the application boundaries is a complex task.
+* You have NoSQL databases, which do not provide ACID transactions, and you need to update multiple tables within a single transaction.
 
-See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
-
-## License
-
-This library is licensed under the MIT-0 License. See the LICENSE file.
+To learn more about the Circuit Breaker pattern and other patterns, please refer to the Amazon Prescriptive Guidance page on [Cloud Design Patterns, architectures, and implementations](https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/circuit-breaker.html).
 
 ## Prerequisites
 
@@ -201,3 +199,13 @@ To avoid incurring additional charges, clean up all the resources that have been
 ```bash
 cdk destroy
 ```
+
+Blog reference: [https://aws.amazon.com/blogs/compute/building-a-serverless-distributed-application-using-a-saga-orchestration-pattern/](https://aws.amazon.com/blogs/compute/building-a-serverless-distributed-application-using-a-saga-orchestration-pattern/)
+
+## Security
+
+See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
+
+## License
+
+This library is licensed under the MIT-0 License. See the LICENSE file.
