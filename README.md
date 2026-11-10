@@ -14,18 +14,24 @@ To learn more about the Circuit Breaker pattern and other patterns, please refer
 
 For this walkthrough, you need:
 - An [AWS](https://signin.aws.amazon.com/signin?redirect_uri=https%3A%2F%2Fportal.aws.amazon.com%2Fbilling%2Fsignup%2Fresume&client_id=signup) account
-- An AWS user with AdministratorAccess (see the [instructions](https://console.aws.amazon.com/iam/home#/roles%24new?step=review&commonUseCase=EC2%2BEC2&selectedUseCase=EC2&policies=arn:aws:iam::aws:policy%2FAdministratorAccess) on the [AWS Identity and Access Management](http://aws.amazon.com/iam) (IAM) console)
+- An AWS IAM user or role with the following minimum permissions:
+  - Lambda: CreateFunction, UpdateFunctionCode, InvokeFunction
+  - DynamoDB: CreateTable, DescribeTable, PutItem, GetItem, UpdateItem, DeleteItem
+  - Step Functions: CreateStateMachine, StartExecution, DescribeExecution
+  - API Gateway: CreateRestApi, CreateResource, CreateMethod
+  - IAM: CreateRole, AttachRolePolicy (scoped to specific resources)
+  - CloudFormation: CreateStack, UpdateStack, DescribeStacks
 - Access to the following AWS services: Amazon API Gateway, AWS Lambda, AWS Step Functions, and Amazon DynamoDB.
 - [Node.js](https://nodejs.org/en/download/) installed
-- .NET 6.0 SDK installed
-- JetBrains Rider or Microsoft Visual Studio 2017 or later (or Visual Studio Code)
+- .NET 10.0 SDK installed
+- JetBrains Rider or Microsoft Visual Studio 2022 or later (or Visual Studio Code)
 - [Postman](https://www.postman.com/downloads/) to make the API call
 
 ## Setting up the environment
 
 For this walkthrough, use the [AWS CDK](https://aws.amazon.com/cdk/) code in the GitHub Repository to create the AWS resources. These include IAM roles, REST API using API Gateway, DynamoDB tables, the Step Functions workflow and Lambda functions.
 
-1. You need an AWS access key ID and secret access key for configuring the AWS Command Line Interface (AWS CLI). To learn more about configuring the AWS CLI, follow these [instructions](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html).
+1. Configure the AWS CLI with your credentials. We recommend using AWS IAM Identity Center (SSO) or temporary credentials instead of long-term access keys. To learn more about configuring the AWS CLI, follow these [instructions](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html).
 2. Clone the repo:
 ```bash
 git clone https://github.com/aws-samples/saga-orchestration-netcore-blog
@@ -39,7 +45,7 @@ git clone https://github.com/aws-samples/saga-orchestration-netcore-blog
 cd saga-orchestration
 cd PlaceOrderLambda/src/PlaceOrderLambda 
 dotnet lambda package
-cp bin/Release/netcoreapp3.1/PlaceOrderLambda.zip ../../../../cdk-saga-orchestration/lambdas
+cp bin/Release/net10.0/PlaceOrderLambda.zip ../../../../cdk-saga-orchestration/lambdas
 ```
 
 5. Repeat the same commands for all the Lambda functions in the saga-orchestration directory.
