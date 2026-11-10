@@ -14,34 +14,32 @@ namespace CdkSagaOrchestration
     {
         public CdkSagaOrchestrationStack(Construct scope, string id, IStackProps props = null) : base(scope, id, props)
         {
-            
+            // Define .NET 10 runtime (not yet in CDK enum, but supported by Lambda)
+            var dotnet10Runtime = new Runtime("dotnet10");
+
             #region iamroles
             var iamLambdaRole = new Role(this,"LambdaExecutionRole", new RoleProps
             {
                 RoleName = "LambdaExecutionRole",
                 AssumedBy = new ServicePrincipal("lambda.amazonaws.com")
             });
-            
-            iamLambdaRole.AddManagedPolicy(ManagedPolicy.FromAwsManagedPolicyName("AmazonDynamoDBFullAccess"));
-            iamLambdaRole.AddManagedPolicy(ManagedPolicy.FromAwsManagedPolicyName("SecretsManagerReadWrite"));
-            iamLambdaRole.AddManagedPolicy(ManagedPolicy.FromAwsManagedPolicyName("CloudWatchLogsFullAccess"));
-            iamLambdaRole.AddManagedPolicy(ManagedPolicy.FromAwsManagedPolicyName("AWSXrayFullAccess"));
-            iamLambdaRole.AddManagedPolicy(ManagedPolicy.FromManagedPolicyArn(this,"AWSLambdaVPCAccessExecutionRole","arn:aws:iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole"));
-            iamLambdaRole.AddManagedPolicy(ManagedPolicy.FromAwsManagedPolicyName("AWSStepFunctionsFullAccess"));
+
+            // Lambda execution role with least privilege policies
+            iamLambdaRole.AddManagedPolicy(ManagedPolicy.FromAwsManagedPolicyName("service-role/AWSLambdaBasicExecutionRole"));
+            iamLambdaRole.AddManagedPolicy(ManagedPolicy.FromAwsManagedPolicyName("AWSXRayDaemonWriteAccess"));
 
             var iamStepFunctionRole = new Role(this,"step_functions_basic_execution", new RoleProps
             {
                 RoleName = "step_functions_basic_execution",
                 AssumedBy = new ServicePrincipal("states.amazonaws.com")
             });
-            
-            iamStepFunctionRole.AddManagedPolicy(ManagedPolicy.FromAwsManagedPolicyName("CloudWatchLogsFullAccess"));
-            iamStepFunctionRole.AddManagedPolicy(ManagedPolicy.FromManagedPolicyArn(this,"AWSLambdaRole","arn:aws:iam::aws:policy/service-role/AWSLambdaRole"));
-            iamStepFunctionRole.AddManagedPolicy(ManagedPolicy.FromAwsManagedPolicyName("AWSXrayFullAccess"));
+
+            // Step Functions role with least privilege
+            iamStepFunctionRole.AddManagedPolicy(ManagedPolicy.FromAwsManagedPolicyName("AWSXRayDaemonWriteAccess"));
             #endregion iamroles
             
             #region DynamoDB tables
-            
+
             var inventoryTable = new Table(this, "Inventory", new TableProps
             {
                 TableName = "Inventory",
@@ -50,9 +48,11 @@ namespace CdkSagaOrchestration
                     Name = "ItemId",
                     Type = AttributeType.STRING
                 },
-                RemovalPolicy = RemovalPolicy.DESTROY
+                RemovalPolicy = RemovalPolicy.DESTROY,
+                Encryption = TableEncryption.AWS_MANAGED,
+                PointInTimeRecovery = true
             });
-            
+
             var ordersTable = new Table(this, "Orders", new TableProps
             {
                 TableName = "Orders",
@@ -66,16 +66,22 @@ namespace CdkSagaOrchestration
                     Name = "CustomerId",
                     Type = AttributeType.STRING
                 },
-                RemovalPolicy = RemovalPolicy.DESTROY
+                RemovalPolicy = RemovalPolicy.DESTROY,
+                Encryption = TableEncryption.AWS_MANAGED,
+                PointInTimeRecovery = true
             });
-            
+
+            // Grant least privilege DynamoDB permissions to Lambda role
+            inventoryTable.GrantReadWriteData(iamLambdaRole);
+            ordersTable.GrantReadWriteData(iamLambdaRole);
+
             #endregion
             
             //Define Lambda Functions
             var invokeOrchestratorLambda = new Function(this,"InvokeOrchestratorLambda", new FunctionProps
             {
                 FunctionName = "InvokeOrchestratorLambda",
-                Runtime = Runtime.DOTNET_6,
+                Runtime = dotnet10Runtime,
                 Handler = "InvokeOrchestratorLambda::InvokeOrchestratorLambda.InvokeOrchestrator::FunctionHandler",
                 Role = iamLambdaRole,
                 Code = Code.FromAsset("lambdas/InvokeOrchestratorLambda.zip"),
@@ -172,57 +178,57 @@ namespace CdkSagaOrchestration
              var placeOrderLambda = new Function(this,"PlaceOrderLambda", new FunctionProps
              {
                  FunctionName = "PlaceOrderLambda",
-                 Runtime = Runtime.DOTNET_6,
+                 Runtime = dotnet10Runtime,
                  Handler = "PlaceOrderLambda::PlaceOrderLambda.PlaceOrder::FunctionHandler",
                  Role = iamLambdaRole,
                  Code = Code.FromAsset("lambdas/PlaceOrderLambda.zip"),
                  Timeout = Duration.Seconds(300)
              });
-            
+
              var updateInventoryLambda = new Function(this,"UpdateInventoryLambda", new FunctionProps
              {
                  FunctionName = "UpdateInventoryLambda",
-                 Runtime = Runtime.DOTNET_6,
+                 Runtime = dotnet10Runtime,
                  Handler = "UpdateInventoryLambda::UpdateInventoryLambda.UpdateInventory::FunctionHandler",
                  Role = iamLambdaRole,
                  Code = Code.FromAsset("lambdas/UpdateInventoryLambda.zip"),
                  Timeout = Duration.Seconds(300)
              });
-            
+
              var makePaymentLambda = new Function(this,"MakePaymentLambda", new FunctionProps
              {
                  FunctionName = "MakePaymentLambda",
-                 Runtime = Runtime.DOTNET_6,
+                 Runtime = dotnet10Runtime,
                  Handler = "MakePaymentLambda::MakePaymentLambda.MakePayment::FunctionHandler",
                  Role = iamLambdaRole,
                  Code = Code.FromAsset("lambdas/MakePaymentLambda.zip"),
                  Timeout = Duration.Seconds(300)
              });
-            
+
              var revertPaymentLambda = new Function(this,"RevertPaymentLambda", new FunctionProps
              {
                  FunctionName = "RevertPaymentLambda",
-                 Runtime = Runtime.DOTNET_6,
+                 Runtime = dotnet10Runtime,
                  Handler = "RevertPaymentLambda::RevertPaymentLambda.RevertPayment::FunctionHandler",
                  Role = iamLambdaRole,
                  Code = Code.FromAsset("lambdas/RevertPaymentLambda.zip"),
                  Timeout = Duration.Seconds(300)
              });
-            
+
              var revertInventoryLambda = new Function(this,"RevertInventoryLambda", new FunctionProps
              {
                  FunctionName = "RevertInventoryLambda",
-                 Runtime = Runtime.DOTNET_6,
+                 Runtime = dotnet10Runtime,
                  Handler = "RevertInventoryLambda::RevertInventoryLambda.RevertInventory::FunctionHandler",
                  Role = iamLambdaRole,
                  Code = Code.FromAsset("lambdas/RevertInventoryLambda.zip"),
                  Timeout = Duration.Seconds(300)
              });
-            
+
              var removeOrderLambda = new Function(this,"RemoveOrderLambda", new FunctionProps
              {
                  FunctionName = "RemoveOrderLambda",
-                 Runtime = Runtime.DOTNET_6,
+                 Runtime = dotnet10Runtime,
                  Handler = "RemoveOrderLambda::RemoveOrderLambda.RemoveOrder::FunctionHandler",
                  Role = iamLambdaRole,
                  Code = Code.FromAsset("lambdas/RemoveOrderLambda.zip"),
@@ -309,6 +315,18 @@ namespace CdkSagaOrchestration
                  TracingEnabled = true,
                  Definition = stepDefinition
              });
+
+             // Grant Step Functions permission to invoke Lambda functions
+             placeOrderLambda.GrantInvoke(iamStepFunctionRole);
+             updateInventoryLambda.GrantInvoke(iamStepFunctionRole);
+             makePaymentLambda.GrantInvoke(iamStepFunctionRole);
+             revertPaymentLambda.GrantInvoke(iamStepFunctionRole);
+             revertInventoryLambda.GrantInvoke(iamStepFunctionRole);
+             removeOrderLambda.GrantInvoke(iamStepFunctionRole);
+
+             // Grant InvokeOrchestratorLambda permission to start Step Functions execution
+             stateMachine.GrantStartExecution(iamLambdaRole);
+
              #endregion
         }
     }

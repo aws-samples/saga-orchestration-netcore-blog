@@ -83,3 +83,6 @@ fabric.properties
 
 **/cdk.out
 **/lambdas/*
+**/package.json
+**/package-lock.json
+**/node_modules
